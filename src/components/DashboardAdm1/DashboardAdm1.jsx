@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Titulo from "../Titulo/Titulo.jsx";
-import css from "../DashboardDaOng1/DashboardDaOng1.module.css";
+import css from "../DashboardAdm1/DashboardAdm1.module.css";
 import Acoes from "../Acoes/Acoes.jsx";
 import MenuLateral from "../MenuLateral/MenuLateral.jsx";
 import Mensagem from "../Mensagem/Mensagem.jsx";
@@ -29,7 +29,7 @@ export default function DashboardAdm1() {
     const ongsPorPagina = 3;
     const [paginaDoadores, setPaginaDoadores] = useState(0);
     const doadoresPorPagina = 3;
-    const API_URL = 'http://10.92.3.144:5000';
+    const API_URL = 'http://127.0.0.1:5000';
 
     useEffect(() => {
         const token = localStorage.getItem('token');
@@ -155,18 +155,26 @@ export default function DashboardAdm1() {
     const doadoresPaginados = doadores.slice(paginaDoadores * doadoresPorPagina, (paginaDoadores + 1) * doadoresPorPagina);
 
     return (
-        <section className={css.secao}>
+        <section className={css.secao} >
             <section className={css.menulateral}>
                 <MenuLateral/>
             </section>
             <div className={css.conteudo}>
                 <Mensagem tipo={tipoMensagem} texto={mensagem} onClose={() => setMensagem('')} />
-                <div><Titulo titulo={`Olá, ${nomeADM || 'Administrador'}`} /></div>
-                <Titulo titulo={'Ações Rápidas'} cor={'preto'}/>
-                <div className={css.acoes}>
-                    <Acoes cor={'amarelo'} texto={'Aprovar ONGs'} pagina={'/listaAprovacoes'}/>
+                <div className={css.tit}><Titulo titulo={`Olá, ${nomeADM || 'Administrador'}`} cor={'preto'}  /></div>
+                <div className={css.tit} ><Titulo titulo={'Ações Rápidas'} cor={'preto'}/></div>
+                <div className={css.linha}>
+                    <div className={css.acoes}>
+                        <Acoes cor={'amarelo'} texto={'Aprovar ONGs'} pagina={'/listaAprovacoes'}/>
+                    </div>
+                    <div className={css.acoes}>
+                        <Acoes cor={'amarelo'} texto={'Ver Relatório'} pagina={''}/>
+                    </div>
+                    <div className={css.acoes}>
+                        <Acoes cor={'amarelo'} texto={'Cadastrar ADM'} pagina={''}/>
+                    </div>
                 </div>
-                <div className={css.titulos}><Titulo titulo={'ONGs Cadastradas'} cor={'preto'}/></div>
+                <div className={css.tit}><Titulo titulo={'ONGs Cadastradas'} cor={'preto'}/></div>
                 <div className={css.cardsAdm}>
                     {ongsPaginadas.length === 0 ? <p>Nenhuma ONG cadastrada</p> : ongsPaginadas.map((ong) => {
                         const status = getCorStatus(ong.codigo_aprovacao);
@@ -197,7 +205,7 @@ export default function DashboardAdm1() {
                         <button className={css.botaoPagina} onClick={() => setPaginaOngs(p => p + 1)} disabled={paginaOngs === totalPaginasOngs - 1}>→</button>
                     </div>
                 )}
-                <div className={css.titulos}><Titulo titulo={'Doadores'} cor={'preto'}/></div>
+                <div className={css.tit}><Titulo titulo={'Doadores'} cor={'preto'}/></div>
                 <div className={css.cardsAdm}>
                     {doadoresPaginados.length === 0 ? <p>Nenhum doador cadastrado</p> : doadoresPaginados.map((doador) => (
                         <div key={doador[0]} className={css.cardAdm} style={{ borderTop: `4px solid ${doador[15] === 1 ? '#167cbf' : '#f65682'}` }}>
