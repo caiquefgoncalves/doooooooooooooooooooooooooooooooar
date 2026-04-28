@@ -26,7 +26,7 @@ export default function Input({
         }
 
         // Para email, garante que fica minúsculo
-        if (type === 'email' || label === 'Email' || label === 'E-mail' || valor.includes('@')) {
+        if (type === 'email' || label === 'Email' || label === 'E-mail') {
             valor = valor.toLowerCase();
         }
         // Primeira letra maiúscula - NÃO aplicar em: password, email, máscaras, apenasTexto

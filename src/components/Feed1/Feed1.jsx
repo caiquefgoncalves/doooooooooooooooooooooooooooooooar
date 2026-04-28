@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import MenuLateral from "../MenuLateral/MenuLateral.jsx";
 import css from "./Feed1.module.css";
+import Curtida from "../Curtida/Curtida.jsx";
 
 export default function Feed() {
     const [atualizacoes, setAtualizacoes] = useState([]);
@@ -97,7 +98,7 @@ export default function Feed() {
                             onKeyDown={handleKeyDown}
                             className={css.inputBusca}
                         />
-                        <button className={css.btnBuscar}>🔍</button>
+                        <button className={css.btnBuscar}>🔍︎</button>
                     </div>
                     <div className={css.filtro}>
                         <span>Filtrar por:</span>
@@ -116,7 +117,7 @@ export default function Feed() {
                 {/* Lista de atualizações */}
                 {atualizacoes.length === 0 ? (
                     <div className={css.vazio}>
-                        <p>📭Nenhuma atualização encontrada.</p>
+                        <p>Nenhuma atualização encontrada.</p>
 
                     </div>
                 ) : (
@@ -134,22 +135,25 @@ export default function Feed() {
                                     <h3 className={css.nomeOng}>{item.ong_nome}</h3>
                                     <span className={css.data}>{item.data}</span>
                                 </div>
+                                <Curtida/>
                             </Link>
 
                             {/* Conteúdo da atualização */}
                             <div className={css.corpo}>
-                                <h2 className={css.tituloAtualizacao}>{item.titulo}</h2>
-                                {item.texto && (
-                                    <p className={css.textoAtualizacao}>{item.texto}</p>
-                                )}
                                 {item.foto && (
                                     <img
                                         src={`${API_URL}/uploads/Atualizacoes/${item.foto}`}
                                         alt=""
                                         className={css.fotoAtualizacao}
-                                        onError={(e) => { e.target.style.display = 'none'; }}
                                     />
                                 )}
+
+                                <div className={css.textoContainer}>
+                                    <h2 className={css.tituloAtualizacao}>{item.titulo}</h2>
+                                    {item.texto && (
+                                        <p className={css.textoAtualizacao}>{item.texto}</p>
+                                    )}
+                                </div>
                             </div>
                         </div>
                     ))

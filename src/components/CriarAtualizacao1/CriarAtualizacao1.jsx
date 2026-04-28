@@ -158,8 +158,6 @@ export default function CriarAtualizacao1() {
                             placeholder={'Texto da atualização'}
                             input={texto}
                             alterarInput={(e) => setTexto(e.target.value)}
-                            textarea={true}
-                            tamanho={'Big'}
                             apenasTexto={true}
                         />
                         <InputArquivo label={'Foto da atualização'} alterarInput={(e) => setFoto(e.target.files[0])} />

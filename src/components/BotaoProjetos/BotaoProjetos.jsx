@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
-import css from "./Botao.module.css";
+import css from "./BotaoProjetos.module.css";
 
-export default function Botao({ acao, pagina, texto, cor = "amarelo" }) {
+export default function BotaoProjetos({ acao, pagina, texto, cor = "amarelo" }) {
     const navigate = useNavigate();
 
     function handleClick(e) {

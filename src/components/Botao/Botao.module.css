@@ -118,6 +118,9 @@
     transform: scale(1.02);
 }
 
+.curtida{
+
+}
 @media (max-width: 480px) {
     .amarelo, .vazado, .rosa {
         width: 100%;

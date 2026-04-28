@@ -3,7 +3,8 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import MenuLateral from "../MenuLateral/MenuLateral.jsx";
 import Titulo from "../Titulo/Titulo.jsx";
-import css from "../Feed1/Feed1.module.css"; // ← CSS DO FEED
+import css from './Ongs1.module.css'
+import Curtida from "../Curtida/Curtida.jsx";
 
 export default function Ongs() {
     const [ongs, setOngs] = useState([]);
@@ -88,9 +89,12 @@ export default function Ongs() {
                                     <p className={css.cardDesc}>{ong.descricao_breve?.substring(0, 80) || 'Sem descrição'}...</p>
                                     <span className={css.cardCategoria}>{ong.categoria || 'ONG'}</span>
                                 </div>
+                                <Curtida/>
                             </Link>
+
                         ))
                     )}
+
                 </div>
             </div>
         </section>

@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
-import css from "./Botao.module.css";
+import css from "./Curtida.module.css";
 
-export default function Botao({ acao, pagina, texto, cor = "amarelo" }) {
+export default function Curtida({ acao, pagina, texto }) {
     const navigate = useNavigate();
 
     function handleClick(e) {
@@ -15,8 +15,8 @@ export default function Botao({ acao, pagina, texto, cor = "amarelo" }) {
     }
 
     return (
-        <button type="button" className={css[cor]} onClick={handleClick}>
-            {texto}
+        <button type="button" className={css.curtida} onClick={handleClick}>
+            <img className={css.coracao} src={'curtida.png'} alt="Curtida" />
         </button>
     );
 }

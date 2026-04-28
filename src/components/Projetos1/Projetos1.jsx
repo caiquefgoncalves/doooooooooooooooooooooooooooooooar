@@ -3,7 +3,8 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import MenuLateral from "../MenuLateral/MenuLateral.jsx";
 import Titulo from "../Titulo/Titulo.jsx";
-import css from "../Feed1/Feed1.module.css"; // ← CSS DO FEED
+import css from './Projetos1.module.css'
+
 
 export default function Projetos() {
     const [projetos, setProjetos] = useState([]);
@@ -93,6 +94,7 @@ export default function Projetos() {
                             </Link>
                         ))
                     )}
+
                 </div>
             </div>
         </section>
